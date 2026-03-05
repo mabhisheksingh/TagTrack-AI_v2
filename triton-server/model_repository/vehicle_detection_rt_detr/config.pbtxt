@@ -1,0 +1,27 @@
+name: "vehicle_detection_rt_detr"
+platform: "pytorch_libtorch"
+max_batch_size: 32
+version_policy: { specific { versions: [1] } }
+instance_group [
+  {
+    kind: KIND_CPU
+  }
+]
+input [
+  {
+    name: "images"
+    data_type: TYPE_FP32
+    dims: [ 3,640, 640 ]
+  }
+]
+output [
+  {
+    name: "output0"
+    data_type: TYPE_FP32
+    dims: [ 300, 6 ]
+  }
+]
+dynamic_batching {
+    preferred_batch_size: [ 4, 8,16,32 ]
+         max_queue_delay_microseconds: 10000
+  }
