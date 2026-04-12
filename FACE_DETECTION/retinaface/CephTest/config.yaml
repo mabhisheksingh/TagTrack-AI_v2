@@ -1,0 +1,37 @@
+# Ceph Object Storage Configuration
+
+# Authentication credentials
+auth:
+  #access_key: "L95EEYTE5BXJDZ0ASCM0"
+  access_key: "44K83QQ0AWFP40FIIXA3"
+  #secret_key: "rg9LmlDwKlflAqCiacV0eY1y5f2jJfFuviHb67pX"
+  secret_key: "3nIoAA7mvY3EBnjAetwApxDOZDvVTmiUMpEndm11"
+
+# Endpoint configuration
+endpoint:
+  #url: "http://10.115.74.180:80"
+  url: "http://172.29.240.199:8080"
+  region: "us-east-1"  # Required for boto3, use us-east-1 for Ceph
+  use_ssl: false
+  verify_ssl: false  # Not applicable for HTTP
+
+# Default bucket settings
+bucket:
+  default_name: "media"
+  create_if_not_exists: false
+
+# Logging configuration
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  log_file: "ceph_operations.log"
+  console_output: true
+
+# Upload settings
+upload:
+  chunk_size: 8388608  # 8MB chunks for multipart uploads
+  max_concurrency: 10
+
+# Retry settings
+retry:
+  max_attempts: 3
+  backoff_factor: 2

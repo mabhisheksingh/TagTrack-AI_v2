@@ -1,0 +1,35 @@
+name: "retinaface"
+backend: "onnxruntime"
+max_batch_size: 0
+
+input [
+  {
+    name: "RetinaFace::input_0"
+    data_type: TYPE_FP32
+    dims: [-1,608,640,3]
+  }
+]
+
+output [
+  {
+    name: "1156"
+    data_type: TYPE_FP32
+    dims: [-1,15960,4]
+  },
+  {
+    name: "1235"
+    data_type: TYPE_FP32
+    dims: [-1,15960,2]
+  },
+  {
+    name: "1314"
+    data_type: TYPE_FP32
+    dims: [-1,15960,10]
+  }
+]
+
+instance_group [
+  {
+    kind: KIND_CPU
+  }
+]

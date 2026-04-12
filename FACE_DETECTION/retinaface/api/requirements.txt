@@ -1,0 +1,22 @@
+# Flask REST API Requirements
+# Add these to your existing requirements.txt or install separately
+
+Flask==2.3.3
+Flask-CORS==4.0.0
+Werkzeug==2.3.7
+
+# JSON handling and utilities
+requests==2.31.0
+uuid==1.30
+
+# File handling and security
+secure-filename==0.1
+
+# Keep all existing requirements from main project:
+# opencv-python
+# numpy
+# tritonclient[grpc]
+# deepface
+# tensorflow
+# scikit-learn
+# scipy

@@ -1,0 +1,32 @@
+services:
+  triton-server:
+    build:
+      context: ..
+      dockerfile: triton_server/Dockerfile
+    container_name: triton-server-v2
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+      - "9002:9002"
+    environment:
+      TRITON_HTTP_PORT: "9000"
+      TRITON_GRPC_PORT: "9001"
+      TRITON_METRICS_PORT: "9002"
+      TRITON_LOG_VERBOSE: "1"
+      TRITON_MODEL_CONTROL_MODE: "poll"
+      TRITON_REPOSITORY_POLL_SECS: "5"
+    volumes:
+      - ./model_repository:/models
+    shm_size: '1g'
+#    gpus: all
+    command: >
+      tritonserver 
+      --model-repository=/models 
+      --model-control-mode=poll 
+      --repository-poll-secs=5
+      --http-port=9000 
+      --grpc-port=9001 
+      --metrics-port=9002 
+      --log-verbose=1 
+      --exit-on-error=false
+      --backend-config=python,shm-default-byte-size=16777216

@@ -1,0 +1,97 @@
+{
+  "processing_config": {
+    "confidence_threshold": 0.3,
+    "nms_threshold": 0.3,
+    "similarity_threshold": 0.65,
+    "spatial_threshold": 300.0,
+    "max_disappeared": 60,
+    "confirmation_frames": 5,
+    "save_cropped_faces": false,
+    "generate_embeddings": true,
+    "embedding_model": "ArcFace",
+    "embedding_detector_backend": "opencv",
+    "min_face_size": 10,
+    "enable_face_alignment": true,
+    "custom_output_fps":  10
+  },
+  "inputs": [
+    {
+      "id": "video_1",
+      "input_type": "video_file",
+      "data": {
+        "path": "input/1338595-hd_1920_1080_30fps.mp4"
+      },
+      "metadata": {
+        "description": "Local MP4 video file",
+        "enabled": true
+      }
+    },
+    {
+      "id": "ceph_frames_1",
+      "input_type": "json_ceph_urls",
+      "data": {
+        "path": "input/uploaded_ceph_links_off_duty_10fps.json"
+      },
+      "metadata": {
+        "description": "JSON file with Ceph S3A URLs",
+        "enabled": false
+      }
+    },
+    {
+      "id": "frame_bytes_1",
+      "input_type": "json_frame_bytes",
+      "data": {
+        "path": "input/frame_bytes_collection.json"
+      },
+      "metadata": {
+        "description": "JSON file with base64 encoded frame bytes",
+        "enabled": false
+      }
+    },
+    {
+      "id": "video_url_1",
+      "input_type": "video_url",
+      "data": {
+        "url": "https://example.com/sample_video.mp4"
+      },
+      "metadata": {
+        "description": "Remote video URL",
+        "enabled": false
+      }
+    },
+    {
+      "id": "direct_video_bytes",
+      "input_type": "video_bytes",
+      "data": {
+        "video_data": "base64_encoded_video_bytes_here",
+        "filename": "embedded_video.mp4"
+      },
+      "metadata": {
+        "description": "Direct video bytes (for API usage)",
+        "enabled": false
+      }
+    },
+    {
+      "id": "direct_frame_bytes",
+      "input_type": "frame_bytes_direct",
+      "data": {
+        "frames": [
+          {
+            "frame_id": 1,
+            "frame_data": "base64_encoded_jpg_bytes_here"
+          },
+          {
+            "frame_id": 2,
+            "frame_data": "base64_encoded_jpg_bytes_here"
+          }
+        ],
+        "fps": 30,
+        "collection_name": "direct_frames"
+      },
+      "metadata": {
+        "description": "Direct frame bytes (for API usage)",
+        "enabled": false
+      }
+    }
+  ]
+}
